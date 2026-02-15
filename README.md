@@ -110,15 +110,13 @@ Responsabilidad:
 
 El sistema se divide en capas conceptuales:
 
-```controller/```
-
-```application/```
-
-```domain/```
-
-```services/```
-
-```infrastructure/```
+```
+controlador/
+aplicacion/
+dominio/
+servicios/
+infraestructura/
+```
 
 Cada carpeta representa un concern distinto.
 
@@ -165,13 +163,63 @@ El diseño refactorizado introduce:
 Sin embargo, en sistemas reales con evolución constante, esta separación reduce significativamente el costo de cambio.
 
 ---
+
 # Cómo Ejecutar el Proyecto
-Ejecutar versión mala
-cd bad_design
-python main.py
-Ejecutar versión buena
-cd good_design
-python main.py
+## Requisitos
+
+* Python 3.8 o superior
+
+Para verificar tu versión de Python:
+
+```python --version```
+o
+```python3 --version```
+
+### Ejecutar la Versión con Diseño Malo
+
+- 1️⃣ Desde la raíz del proyecto, navega a la carpeta:
+
+```cd bad_design```
+
+- 2️⃣ Ejecuta el archivo principal:
+
+```python main.py```
+o
+```python3 main.py```
+
+#### Salida esperada:
+
+```
+=== CREANDO CITA (DISEÑO MALO) ===
+[BD] Verificando disponibilidad del doctor...
+[BD] Guardando cita...
+[EMAIL] Enviando confirmación...
+=== FIN ===
+```
+
+En esta versión toda la lógica se ejecuta desde una sola clase, evidenciando la violación de SoC y un Fat Controller implícito.
+
+### Ejecutar la Versión con Diseño Refactorizado
+
+1️⃣ Desde la raíz del proyecto, navega a la carpeta:
+
+```cd diseno_bueno```
+
+2️⃣ Ejecuta el archivo principal:
+
+```python main.py```
+o
+```python3 main.py```
+
+#### Salida esperada:
+
+```
+=== CREANDO CITA (DISEÑO BUENO) ===
+[Disponibilidad] Verificando doctor...
+[Repositorio] Guardando en base de datos...
+[Notificaciones] Enviando confirmación...
+=== FIN ===
+```
 
 ---
 # Conclusión
